@@ -1,0 +1,12 @@
+// main.js (ULTRA)
+const output=document.getElementById('output');const generateBtn=document.getElementById('generate-btn');const copyBtn=document.getElementById('copy-btn');const downloadBtn=document.getElementById('download-btn');const historyPanel=document.getElementById('history-panel');const clearHistoryBtn=document.getElementById('clear-history-btn');
+let history=[];
+function renderHistory(){if(history.length===0){historyPanel.innerHTML='<p class="muted">No history yet</p>';return;}historyPanel.innerHTML='';history.forEach((item,i)=>{const div=document.createElement('div');div.className='history-item';div.addEventListener('click',()=>loadFromHistory(i));const ts=document.createElement('div');ts.className='history-timestamp';ts.textContent=item.timestamp;const preview=document.createElement('div');preview.className='history-preview';preview.textContent=item.preview;const del=document.createElement('button');del.className='danger';del.textContent='Delete';del.addEventListener('click',(ev)=>{ev.stopPropagation();deleteHistoryItem(i);});div.appendChild(ts);div.appendChild(preview);div.appendChild(del);historyPanel.appendChild(div);});}
+function deleteHistoryItem(i){history.splice(i,1);renderHistory();}
+function loadFromHistory(i){output.textContent=history[i].text;}
+function saveToHistory(text){const timestamp=new Date().toLocaleString();const preview=text.split('\n')[0].slice(0,120)+'...';history.unshift({text,timestamp,preview});if(history.length>500)history.pop();renderHistory();}
+generateBtn.addEventListener('click',()=>{const config={creativity:document.getElementById('creativity').value,size:document.getElementById('size').value,length:document.getElementById('length').value};const text=generateCreature(config);output.textContent=text;saveToHistory(text);});
+copyBtn.addEventListener('click',()=>{if(!navigator.clipboard){alert('Clipboard API not available');return;}navigator.clipboard.writeText(output.textContent).then(()=>{copyBtn.textContent='✅ COPIED';setTimeout(()=>copyBtn.textContent='📋 COPY',1000);});});
+downloadBtn.addEventListener('click',()=>{const blob=new Blob([output.textContent],{type:'text/plain'});const link=document.createElement('a');link.href=URL.createObjectURL(blob);link.download='alien_description.txt';link.click();});
+clearHistoryBtn.addEventListener('click',()=>{if(!confirm('Clear entire history?'))return;history=[];renderHistory();});
+renderHistory();

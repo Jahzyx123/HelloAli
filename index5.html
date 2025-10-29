@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Hypothetical Synthetic Alien Life Generator</title>
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>HYPOTHETICAL SYNTHETIC ALIEN LIFE GENERATOR</h1>
+      <p class="version">V.14.2 - ATMOSPHERIC &amp; ENVIRONMENTAL UPDATE</p>
+    </header>
+
+    <main class="grid">
+      <aside class="controls">
+        <label>Creativity Level
+          <select id="creativity">
+            <option value="HIGH">High</option>
+            <option value="SIMPLE">Simple</option>
+            <option value="LOVECRAFTIAN">Lovecraftian</option>
+          </select>
+        </label>
+
+        <label>Size Category
+          <select id="size">
+            <option value="COLOSSAL">Colossal</option>
+            <option value="LARGE">Large</option>
+            <option value="SMALL">Small</option>
+            <option value="TINY">Tiny</option>
+          </select>
+        </label>
+
+        <label>Description Length
+          <select id="length">
+            <option value="MEDIUM">Medium</option>
+            <option value="MINIMAL">Minimal</option>
+            <option value="SHORT">Short</option>
+            <option value="LONG">Long</option>
+            <option value="MAXIMUM">Maximum</option>
+          </select>
+        </label>
+
+        <button id="generate-btn" class="primary">Generate</button>
+
+        <section class="history-box">
+          <div class="history-header">
+            <strong>GENERATION HISTORY</strong>
+            <button id="clear-history-btn" class="danger">Clear All</button>
+          </div>
+          <div id="history-panel" class="history-panel">
+            <p class="muted">No history yet</p>
+          </div>
+        </section>
+      </aside>
+
+      <section class="output-area">
+        <div class="output-controls">
+          <button id="copy-btn" class="action">📋 COPY</button>
+          <button id="download-btn" class="action">💾 DOWNLOAD</button>
+        </div>
+        <pre id="output" class="output">Welcome to the Xenobiological Specimen Generator. Select parameters and click "Generate".</pre>
+      </section>
+    </main>
+
+    <footer>
+      <p>&copy; 2025 Synthetic Alien Life Generator. All rights reserved.</p>
+    </footer>
+  </div>
+  <script src="js/data_atmosphere.js"></script>
+  <script src="js/data_environment.js"></script>
+  <script src="js/data_creature_states.js"></script>
+  <script src="js/data_beyond_earth.js"></script>
+  <script src="js/data_vertical_stretch.js"></script>
+  <script src="js/data_colors.js"></script>
+  <script src="js/data_mutation_engines.js"></script>
+  <script src="js/data_connectors.js"></script>
+  <script src="js/data_uniqueFeatures.js"></script>
+  <script src="js/generator.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>
